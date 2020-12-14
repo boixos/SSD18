@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Home Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        body{
+            background-image: url('/static/charts.png');
+            background-size: 50% auto;
+            background-repeat: no-repeat;
+        }
+        .form1{
+            text-align: center;
+            margin-top: 100px;
+        }
+        h1{
+            margin-top: 50px;
+            margin-bottom: 100px;
+            margin-right: 300px;
+        }
+        .jumbotron{
+            margin-left: 1000px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1 align="right" style="color:brown">Visualization</h1>
+    <div class="jumbotron">
+    <form action="add" method="post" class="form1">
+            {% csrf_token%}
+               <div class="custom-file mt-3">
+            <input type="file" class="custom-file-input" id="File" name="File" multiple>
+            <label class="custom-file-label" for="File">Choose file</label>
+               </div>
+            <br>
+            <br>
+            <div class="form-group">
+                <label for="keywd">Search a keyword</label>
+                <input type="text" class="form-control" id="keywd" name="keywd">
+                   </div>
+                <br>
+                <br>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+
+    </form>
+    </div>
+</body>
+<script>
+$(".custom-file-input").on("change", function() {
+  var fileName = $(this).val().split("\\").pop();
+  $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+});
+</script>
+</html>
